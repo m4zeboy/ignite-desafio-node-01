@@ -31,4 +31,19 @@ export class Database {
     return data;
   }
 
+  select(table, search) {
+    let data = this.#database[table] ?? [];
+    if(search) {
+      data = data.filter(row => {
+        const searchEntries = Object.entries(search);
+        return searchEntries.some(([key, value]) => {
+          const doesAttributeIncludesSearch = row[key].toLowerCase().includes(value.toLowerCase())
+          return doesAttributeIncludesSearch;
+        })
+      })
+    }
+
+    return data;
+  }
+ 
 }
