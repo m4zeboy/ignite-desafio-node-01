@@ -18,7 +18,13 @@ export class Router {
       handler
     })
   }
-
+  put(url,handler) {
+    this.#routes.push({
+      method: "PUT",
+      path: buildRoutePath(url),
+      handler
+    })
+  }
   find(method, url) {
     return this.#routes.find(route => {
       return route.method === method && route.path.test(url);
