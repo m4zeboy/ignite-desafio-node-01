@@ -23,6 +23,5 @@ export async function updateTask(req, res) {
   }
 
   database.update("tasks", id, { ...doesTaskExist, title, description })
-  return res.end(); 
-
+  return res.writeHead(201).end(); 
 }
