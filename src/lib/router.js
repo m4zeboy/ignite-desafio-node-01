@@ -25,6 +25,15 @@ export class Router {
       handler
     })
   }
+
+  delete(url,handler) {
+    this.#routes.push({
+      method: "DELETE",
+      path: buildRoutePath(url),
+      handler
+    })
+  }
+
   find(method, url) {
     return this.#routes.find(route => {
       return route.method === method && route.path.test(url);
