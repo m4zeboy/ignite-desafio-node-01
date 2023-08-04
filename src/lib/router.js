@@ -34,6 +34,14 @@ export class Router {
     })
   }
 
+  patch(url,handler) {
+    this.#routes.push({
+      method: "PATCH",
+      path: buildRoutePath(url),
+      handler
+    })
+  }
+
   find(method, url) {
     return this.#routes.find(route => {
       return route.method === method && route.path.test(url);
